@@ -13,73 +13,71 @@ const About = () => {
         <meta name="description" content="Learn about Clark's Secure Web LLC — 25+ years of bookkeeping, QuickBooks consulting, and IT services in Owensboro, Kentucky." />
       </Helmet>
 
-      {/* Page Header */}
-      <section className="bg-primary text-primary-foreground section-padding">
+      <section className="section-padding" style={{
+        background: "linear-gradient(160deg, hsl(215 55% 12%) 0%, hsl(215 50% 18%) 40%, hsl(215 38% 28%) 100%)"
+      }}>
         <div className="container mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold">About Us</h1>
-            <p className="mt-4 text-primary-foreground/80 text-lg max-w-2xl">
-              Trusted financial management and IT services built on decades of experience.
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+            <p className="text-xs font-body font-medium tracking-widest uppercase text-accent mb-3">About Us</p>
+            <h1 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground">Built on Trust, Driven by Expertise</h1>
+            <p className="mt-3 text-primary-foreground/70 text-base max-w-lg font-body">
+              Over two decades helping businesses in Owensboro get their finances and technology right.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Story */}
       <section className="section-padding bg-background">
-        <div className="container mx-auto max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-            <h2 className="font-heading text-3xl font-bold mb-6">Our Story</h2>
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+        <div className="container mx-auto max-w-3xl">
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }}>
+            <div className="space-y-4 text-muted-foreground leading-relaxed font-body text-[15px]">
               <p>
-                For over 25 years, Clark's Secure Web LLC has been a trusted partner for businesses in Owensboro, Kentucky and the surrounding region. Founded with a commitment to helping small and mid-sized businesses manage their finances and technology, we've grown into a full-service financial management and IT solutions provider.
+                Clark's Secure Web LLC was founded with a simple idea: local businesses deserve the same quality financial management and IT support that large corporations take for granted. For over 25 years, we've been delivering exactly that to businesses across Owensboro, Kentucky.
               </p>
               <p>
-                Our expertise spans bookkeeping, QuickBooks consulting as a certified ProAdvisor, business management, IT support, network upgrades, and software solutions. We understand that every business is unique, and we tailor our services to meet your specific needs.
+                As a certified QuickBooks ProAdvisor, we bring deep expertise in financial software alongside practical experience in bookkeeping, business operations, and technology infrastructure. We're not a faceless firm — we're your neighbors, and we take your success personally.
               </p>
               <p>
-                At Clark's Secure Web LLC, we believe that efficient financial operations and reliable technology infrastructure are the foundation of a successful business. Our mission is to help you focus on what you do best — running your business — while we take care of the rest.
+                Whether you need help reconciling your books, setting up a new QuickBooks system, upgrading your office network, or just someone reliable to call when the software breaks — we're here.
               </p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Values */}
       <section className="section-padding bg-secondary">
         <div className="container mx-auto">
-          <SectionHeading title="What Drives Us" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <SectionHeading title="What We Stand For" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {[
-              { icon: Target, title: "Our Mission", desc: "To help businesses operate more efficiently through expert financial management and technology solutions." },
-              { icon: Heart, title: "Our Values", desc: "Integrity, reliability, and personalized service guide every client relationship we build." },
-              { icon: Award, title: "Our Expertise", desc: "Certified QuickBooks ProAdvisor with deep knowledge of financial systems and IT infrastructure." },
+              { icon: Target, title: "Mission", desc: "Help businesses run more efficiently through expert financial and technology services." },
+              { icon: Heart, title: "Values", desc: "Integrity, reliability, and genuine care for every client we work with." },
+              { icon: Award, title: "Expertise", desc: "Certified QuickBooks ProAdvisor with deep financial and IT knowledge." },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-card rounded-lg p-6 border border-border text-center"
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="bg-card rounded border border-border p-5"
               >
-                <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-accent/10 p-4">
-                  <item.icon className="h-7 w-7 text-accent" />
-                </div>
-                <h3 className="font-heading text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
+                <item.icon className="h-5 w-5 text-accent mb-3" strokeWidth={1.75} />
+                <h3 className="font-heading text-sm font-bold mb-1.5">{item.title}</h3>
+                <p className="text-xs text-muted-foreground font-body leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="section-padding bg-primary text-primary-foreground text-center">
-        <div className="container mx-auto">
-          <h2 className="font-heading text-3xl font-bold mb-4">Ready to Work Together?</h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Let us help your business operate more efficiently with our proven expertise.
+      <section className="section-padding" style={{
+        background: "linear-gradient(160deg, hsl(215 55% 12%) 0%, hsl(215 50% 18%) 40%, hsl(215 38% 28%) 100%)"
+      }}>
+        <div className="container mx-auto text-center">
+          <h2 className="font-heading text-2xl font-bold mb-3 text-primary-foreground">Let's Work Together</h2>
+          <p className="text-primary-foreground/70 mb-6 max-w-md mx-auto font-body text-sm">
+            Tell us about your business and we'll figure out how we can help.
           </p>
           <Button asChild size="lg" variant="hero">
             <Link to="/contact">Get in Touch</Link>
