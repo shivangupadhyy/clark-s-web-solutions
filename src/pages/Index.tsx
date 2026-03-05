@@ -8,19 +8,19 @@ import ServiceCard from "@/components/ServiceCard";
 import SectionHeading from "@/components/SectionHeading";
 
 const services = [
-  { icon: BookOpen, title: "Bookkeeping & Financial Management", description: "Accurate financial record keeping and reporting to keep your business on track." },
-  { icon: Calculator, title: "QuickBooks Consulting", description: "Setup, troubleshooting, and optimization from a certified QuickBooks ProAdvisor." },
-  { icon: Briefcase, title: "Business Management", description: "Improving business financial processes and streamlining operations." },
-  { icon: Monitor, title: "IT Support Services", description: "Reliable business technology support and system optimization." },
-  { icon: Wifi, title: "Network Upgrades", description: "Improving network speed, security, and reliability for your business." },
-  { icon: Settings, title: "Software Support", description: "Business software troubleshooting and ongoing support." },
+  { icon: BookOpen, title: "Bookkeeping", description: "Accurate record keeping and financial reporting for small businesses." },
+  { icon: Calculator, title: "QuickBooks Consulting", description: "Setup, optimization, and ongoing support from a certified ProAdvisor." },
+  { icon: Briefcase, title: "Business Management", description: "Improve financial processes and streamline day-to-day operations." },
+  { icon: Monitor, title: "IT Support", description: "Responsive technology support to keep your business running." },
+  { icon: Wifi, title: "Network Upgrades", description: "Faster, more secure network infrastructure for your office." },
+  { icon: Settings, title: "Software Support", description: "Installation, troubleshooting, and maintenance for business software." },
 ];
 
 const whyUs = [
-  { icon: Clock, title: "25+ Years Experience", description: "Decades of proven expertise in financial and IT services." },
-  { icon: Award, title: "Certified QuickBooks ProAdvisor", description: "Expert-level QuickBooks setup, training, and support." },
-  { icon: ShieldCheck, title: "Reliable IT Solutions", description: "Dependable technology infrastructure for your business." },
-  { icon: Users, title: "Client-Focused Service", description: "Personalized attention to every client's unique needs." },
+  { icon: Clock, title: "25+ Years", description: "Decades of hands-on experience in finance and IT." },
+  { icon: Award, title: "QuickBooks ProAdvisor", description: "Certified expertise in QuickBooks setup and support." },
+  { icon: ShieldCheck, title: "Reliable IT", description: "Dependable technology solutions you can count on." },
+  { icon: Users, title: "Client-First", description: "Personalized service tailored to your business." },
 ];
 
 const Index = () => {
@@ -36,11 +36,11 @@ const Index = () => {
 
       <HeroSection />
 
-      {/* Services Overview */}
+      {/* Services */}
       <section className="section-padding bg-background">
         <div className="container mx-auto">
-          <SectionHeading title="Our Services" subtitle="Comprehensive financial management and IT solutions tailored to your business needs." />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <SectionHeading title="What We Do" subtitle="Financial management and IT services for businesses that need to run smoothly." />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service) => (
               <ServiceCard key={service.title} {...service} />
             ))}
@@ -48,25 +48,23 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Choose Us */}
+      {/* Why Us */}
       <section className="section-padding bg-secondary">
         <div className="container mx-auto">
-          <SectionHeading title="Why Choose Us" subtitle="Trusted expertise that drives results for your business." />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <SectionHeading title="Why Businesses Trust Us" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {whyUs.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="text-center p-6"
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="p-5 rounded border border-border bg-card"
               >
-                <div className="mx-auto mb-4 inline-flex items-center justify-center rounded-full bg-accent/10 p-4">
-                  <item.icon className="h-7 w-7 text-accent" />
-                </div>
-                <h3 className="font-heading text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <item.icon className="h-5 w-5 text-accent mb-3" strokeWidth={1.75} />
+                <h3 className="font-heading text-sm font-bold mb-1">{item.title}</h3>
+                <p className="text-xs text-muted-foreground font-body leading-relaxed">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -74,22 +72,24 @@ const Index = () => {
       </section>
 
       {/* CTA */}
-      <section className="section-padding bg-primary text-primary-foreground">
+      <section className="section-padding" style={{
+        background: "linear-gradient(160deg, hsl(215 55% 12%) 0%, hsl(215 50% 18%) 40%, hsl(215 38% 28%) 100%)"
+      }}>
         <div className="container mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.4 }}
           >
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-              Let Us Simplify Your Business Finances and Technology
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3 text-primary-foreground">
+              Ready to simplify your finances and technology?
             </h2>
-            <p className="text-primary-foreground/80 text-lg mb-8 max-w-2xl mx-auto">
-              Partner with Clark's Secure Web LLC for reliable financial management and IT support that helps your business thrive.
+            <p className="text-primary-foreground/70 text-base mb-7 max-w-lg mx-auto font-body">
+              Let's talk about what your business needs. No pressure, no jargon.
             </p>
             <Button asChild size="lg" variant="hero">
-              <Link to="/contact">Schedule Consultation</Link>
+              <Link to="/contact">Schedule a Consultation</Link>
             </Button>
           </motion.div>
         </div>
