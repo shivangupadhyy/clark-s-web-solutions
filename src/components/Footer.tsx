@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
