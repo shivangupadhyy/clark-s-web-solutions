@@ -17,8 +17,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-14 px-4 lg:px-8">
-        <Link to="/" className="flex items-center gap-2">
-          <Shield className="h-6 w-6 text-accent" strokeWidth={1.75} />
+        <Link to="/" className="flex items-center">
           <span className="font-heading text-base font-bold text-primary">Clark's Secure Web</span>
         </Link>
 
