@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -25,7 +26,21 @@ const Contact = () => {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    console.log("Form submitted:", data);
+    const { error } = await supabase
+      .from("consultation_submissions")
+      .insert({
+        name: data.name,
+        email: data.email,
+        phone: data.phone || null,
+        message: data.message,
+      });
+
+    if (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Submission error:", error);
+      return;
+    }
+
     toast.success("Thank you! We'll be in touch shortly.");
     reset();
   };
