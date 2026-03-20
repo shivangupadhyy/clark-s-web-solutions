@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -16,28 +15,52 @@ const contactSchema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().max(20).optional(),
   message: z.string().trim().min(1, "Message is required").max(2000),
+  botcheck: z.string().optional(),
 });
 
 type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
+  const web3FormsAccessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    const { error } = await supabase
-      .from("consultation_submissions")
-      .insert({
+    if (!web3FormsAccessKey) {
+      toast.error("Contact form is not configured yet.");
+      return;
+    }
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        access_key: web3FormsAccessKey,
+        subject: "New contact form submission",
+        from_name: "Clark's Secure Web LLC Website",
         name: data.name,
         email: data.email,
-        phone: data.phone || null,
+        phone: data.phone || "",
         message: data.message,
-      });
+        botcheck: data.botcheck || "",
+      }),
+    });
 
-    if (error) {
+    if (!response.ok) {
       toast.error("Something went wrong. Please try again.");
-      console.error("Submission error:", error);
+      console.error("Submission error:", await response.text());
+      return;
+    }
+
+    const result = await response.json();
+
+    if (!result.success) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Submission error:", result);
       return;
     }
 
@@ -88,6 +111,14 @@ const Contact = () => {
               <h2 className="font-heading text-2xl font-bold mb-2">Send Us a Message</h2>
               <p className="text-muted-foreground font-body text-sm mb-8">Fill out the form and we'll get back to you within 24 hours.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+                <input
+                  type="text"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  className="hidden"
+                  aria-hidden="true"
+                  {...register("botcheck")}
+                />
                 <div>
                   <Label htmlFor="name" className="text-sm font-medium">Name *</Label>
                   <Input id="name" {...register("name")} className="mt-1.5 h-12 rounded-lg" placeholder="Your full name" />
