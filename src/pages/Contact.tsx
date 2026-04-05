@@ -131,7 +131,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <Label htmlFor="phone" className="text-sm font-medium">Phone</Label>
-                  <Input id="phone" type="tel" {...register("phone")} className="mt-1.5 h-12 rounded-lg" placeholder="18004392134" />
+                  <Input id="phone" type="tel" {...register("phone")} className="mt-1.5 h-12 rounded-lg" placeholder="1-800-439-2134" />
                 </div>
                 <div>
                   <Label htmlFor="message" className="text-sm font-medium">Message *</Label>
@@ -164,7 +164,7 @@ const Contact = () => {
                   {[
                     { icon: MapPin, label: "Location", value: "Owensboro, Kentucky" },
                     { icon: Mail, label: "Email", value: "clarkssecureweb@gmail.com" },
-                    { icon: Phone, label: "Phone", value: "18004392134" },
+                    { icon: Phone, label: "Phone", value: "1-800-439-2134" },
                     { icon: Clock, label: "Hours", value: "Mon – Fri: 8:00 AM – 5:00 PM" },
                   ].map((item, i) => (
                     <motion.div
