@@ -64,8 +64,8 @@ const Footer = () => {
             <div className="space-y-4 text-sm text-primary-foreground/50">
               {[
                 { icon: MapPin, text: "Owensboro, KY" },
-                { icon: Mail, text: "info@clarkssecureweb.com" },
-                { icon: Phone, text: "(270) 555-0100" },
+                { icon: Mail, text: "clarkssecureweb@gmail.com" },
+                { icon: Phone, text: "18004392134" },
               ].map((item) => (
                 <div key={item.text} className="flex items-center gap-3 group">
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
